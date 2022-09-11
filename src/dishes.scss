@@ -1,0 +1,42 @@
+$cardMargin: 10%;
+
+.cardBox {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.myCard {
+  position: flex;
+  margin: $cardMargin 0 0 0;
+}
+
+.myCard {
+  img {
+    width: 250px;
+    height: 180px;
+  }
+
+  h5 {
+    color: chocolate;
+    text-decoration: solid;
+  }
+
+  p {
+    color: #fff;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .myCard {
+    margin: $cardMargin 0 0 0;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+  .cardBox {
+    display: flex;
+  }
+}

@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import Votes from "./vote";
+import Login from "./login";
+import Dishes from "./dishes";
+import Result from "./pollResult";
 
 function App() {
+  const [dishes, setDishes] = useState([]);
+
+  useEffect(() => {
+    const getDishes = async () => {
+      let reqData = await fetch(
+        `https://raw.githubusercontent.com/syook/react-dishpoll/main/db.json`
+      );
+      let resData = await reqData.json();
+
+      setDishes(resData);
+    };
+    getDishes();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Login dishes={dishes} />} />
+        <Route path="/home" element={<Dishes dishes={dishes} />} />
+        <Route path="/poll" element={<Votes dishes={dishes} />} />
+        <Route path="/pollresult" element={<Result dishes={dishes} />} />
+      </Routes>
+    </>
   );
 }
 
