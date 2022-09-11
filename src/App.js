@@ -23,7 +23,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Login dishes={dishes} />} />
+        <Route path="/favdishes" element={<Login dishes={dishes} />} />
         <Route path="/home" element={<Dishes dishes={dishes} />} />
         <Route path="/poll" element={<Votes dishes={dishes} />} />
         <Route path="/pollresult" element={<Result dishes={dishes} />} />

@@ -17,7 +17,7 @@ const PollResult = () => {
     <>
       <div className="container p-4">
         <NavLink
-          to="/"
+          to="/favdishes"
           type="button"
           className="btn btn-outline-danger btnLogout my-1"
         >
