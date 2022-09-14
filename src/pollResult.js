@@ -1,20 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Navbar from "./navbar";
 import "./pollResult.css";
-import DishesData from "./dishesData";
-import { firstChoice, secondChoice, thirdChoice } from "./vote";
 
 const PollResult = () => {
-  let first = DishesData.findIndex((obj) => obj.dishName === firstChoice);
-  let second = DishesData.findIndex((obj) => obj.dishName === secondChoice);
-  let third = DishesData.findIndex((obj) => obj.dishName === thirdChoice);
-  DishesData[first].value += 30;
-  DishesData[second].value += 20;
-  DishesData[third].value += 10;
+  const votedDishes = JSON.parse(localStorage.getItem("dishes"));
 
   return (
     <>
+      <Navbar />
       <div className="container p-4">
         <NavLink
           to="/favdishes"
@@ -27,27 +22,29 @@ const PollResult = () => {
         <h1 style={{ textAlign: "center" }} className="my-4">
           Favorite Dish Poll Result
         </h1>
-        {DishesData.sort((a, b) =>
-          a.value < b.value ? 1 : b.value < a.value ? -1 : 0
-        ).map((val) => {
-          return (
-            <>
-              <div className="m-2">
-                <label>{val.dishName}</label>
-                <div className="progress my-2">
-                  <div
-                    id="progressbar-1"
-                    className="progress-bar progress-bar-primary"
-                    role="progressbar"
-                    style={{ width: `${val.value}px` }}
-                  >
-                    {val.value}
+        {votedDishes
+          .sort((a, b) =>
+            a.points < b.points ? 1 : b.points < a.points ? -1 : 0
+          )
+          .map((val) => {
+            return (
+              <>
+                <div className="m-2" key={val.id}>
+                  <label id={`highlighted${val.id}`}>{val.dishName}</label>
+                  <div className="progress my-2">
+                    <div
+                      id="progressbar-1"
+                      className="progress-bar progress-bar-primary"
+                      role="progressbar"
+                      style={{ width: `${val.points}px` }}
+                    >
+                      {val.points} points
+                    </div>
                   </div>
                 </div>
-              </div>
-            </>
-          );
-        })}
+              </>
+            );
+          })}
       </div>
     </>
   );

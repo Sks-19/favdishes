@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Data from "./userData";
+import Data from "./database/users.json";
 
 const Login = () => {
   const handleSubmit = (e) => {
