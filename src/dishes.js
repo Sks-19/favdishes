@@ -126,14 +126,14 @@ const Dishes = (props) => {
           </div>
           <div style={{ textAlign: "center" }}>
             <button
-              className="btn btn-outline-primary p-2 px-4 m-4 text-white fw-bold roundeed-3"
+              className="btn btn-outline-primary p-2 px-4 m-4 text-dark fw-bold roundeed-3"
               disabled={disable}
               onClick={handleEditResponse}
             >
-              Edit Response
+              Edit
             </button>
             <button
-              className="btn btn-outline-success p-2 px-4 m-4 text-white fw-bold roundeed-3"
+              className="btn btn-outline-success p-2 px-4 m-4 text-dark fw-bold roundeed-3"
               disabled={disable}
               onClick={handleSubmit}
             >
@@ -153,7 +153,7 @@ const Dishes = (props) => {
                   />
                   <div className="card-body">
                     <h5 className="card-title">{dish.dishName}</h5>
-                    <p className="card-text">{dish.description}</p>
+                    <p className="card-text text-dark">{dish.description}</p>
 
                     <div
                       className="btn-group text-center d-block mx-2"
@@ -166,7 +166,7 @@ const Dishes = (props) => {
                         checked={dish.isRank1}
                       />
                       <label
-                        className="btn btn-outline-primary"
+                        className="btn btn-outline-danger"
                         style={{ fontSize: "12px" }}
                         onClick={() => handleSelectRank(dish.id, "rank1")}
                       >
@@ -179,7 +179,7 @@ const Dishes = (props) => {
                         checked={dish.isRank2}
                       />
                       <label
-                        className="btn btn-outline-success"
+                        className="btn btn-outline-primary"
                         style={{ fontSize: "12px" }}
                         onClick={() => handleSelectRank(dish.id, "rank2")}
                       >
@@ -193,7 +193,7 @@ const Dishes = (props) => {
                         checked={dish.isRank3}
                       />
                       <label
-                        className="btn btn-outline-danger"
+                        className="btn btn-outline-success"
                         style={{ fontSize: "12px" }}
                         onClick={() => handleSelectRank(dish.id, "rank3")}
                       >

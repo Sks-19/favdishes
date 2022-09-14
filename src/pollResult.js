@@ -20,17 +20,20 @@ const PollResult = () => {
     <>
       <Navbar />
       <div className="container p-4">
-        <button
-          type="button"
-          className="btn btn-outline-danger btnLogout my-1"
-          onClick={logoutHandler}
-        >
-          Logout
-        </button>
-
-        <h1 style={{ textAlign: "center" }} className="my-4">
-          Favorite Dish Poll Result
-        </h1>
+        <div className="row">
+          <button
+            type="button"
+            className="btn btn-outline-danger btnLogout my-1"
+            onClick={logoutHandler}
+          >
+            Logout
+          </button>
+        </div>
+        <div className="row">
+          <h1 style={{ textAlign: "center" }} className="my-4">
+            Favorite Dish Poll Result
+          </h1>
+        </div>
         {votedDishes
           .sort((a, b) =>
             a.points < b.points ? 1 : b.points < a.points ? -1 : 0
@@ -43,7 +46,7 @@ const PollResult = () => {
                   <div className="progress my-2">
                     <div
                       id="progressbar-1"
-                      className="progress-bar progress-bar-primary"
+                      className="progress-bar progress-bar-success"
                       role="progressbar"
                       style={{ width: `${val.points}px` }}
                     >

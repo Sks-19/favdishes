@@ -16,7 +16,9 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar row navbar-dark bg-dark px-4">
-        <h3 style={{ textAlign: "center" }}>Vote for your Favorite Dishes!</h3>
+        <h3 style={{ textAlign: "center", color: "#fff" }}>
+          Vote for your Favorite Dishes!
+        </h3>
 
         <div style={{ textAlign: "center" }}>
           <button

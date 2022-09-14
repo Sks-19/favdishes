@@ -37,6 +37,10 @@ const Login = () => {
                   <p className="text-white-50 mb-4">
                     Please enter your Username and password!
                   </p>
+                  <span>
+                    Hint: Use username: <b>admin</b> & password: <b>admin123</b>{" "}
+                    as guest login.
+                  </span>
                   <p className="Alert"></p>
 
                   <div className="form-outline form-white mb-4">
