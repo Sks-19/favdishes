@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Routes, Route } from "react-router-dom";
 import Login from "./login";
 import Dishes from "./dishes";
 import Result from "./pollResult";
@@ -9,6 +8,7 @@ import { useSelector } from "react-redux";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const isResult = useSelector((state) => state.result.isResult);
   const [dishes, setDishes] = useState([]);
 
   const getDishes = () => {
@@ -41,14 +41,8 @@ function App() {
   return (
     <>
       {!isLoggedIn && <Login dishes={dishes} />}
-      {/* {isLoggedIn && <Dishes dishes={dishes} />} */}
-      <Routes>
-        <Route path="/favdishes" element={<Login dishes={dishes} />} />
-        {isLoggedIn && (
-          <Route path="/home" element={<Dishes dishes={dishes} />} />
-        )}
-        <Route path="/pollresult" element={<Result />} />
-      </Routes>
+      {isLoggedIn && !isResult && <Dishes dishes={dishes} />}
+      {isResult && <Result dishes={dishes} />}
     </>
   );
 }

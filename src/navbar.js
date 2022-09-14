@@ -1,29 +1,39 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useDispatch } from "react-redux";
+import { resultActions } from "./store/result";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+
+  const handleHome = () => {
+    dispatch(resultActions.home());
+  };
+  const handleResult = () => {
+    dispatch(resultActions.result());
+  };
+
   return (
     <>
       <nav className="navbar row navbar-dark bg-dark px-4">
         <h3 style={{ textAlign: "center" }}>Vote for your Favorite Dishes!</h3>
 
         <div style={{ textAlign: "center" }}>
-          <NavLink
-            to="/home"
+          <button
+            onClick={handleHome}
             className="btn btn-outline-success m-4 my-sm-0"
             type="button"
           >
             Vote
-          </NavLink>
+          </button>
 
-          <NavLink
-            to="/pollresult"
+          <button
+            onClick={handleResult}
             className="btn btn-outline-danger m-4 my-sm-0"
             type="button"
           >
             Result
-          </NavLink>
+          </button>
         </div>
       </nav>
     </>

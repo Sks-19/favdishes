@@ -4,12 +4,14 @@ import Navbar from "./navbar";
 import "./pollResult.css";
 import { useDispatch } from "react-redux";
 import { authActions } from "./store/auth";
+import { resultActions } from "./store/result";
 
 const PollResult = () => {
   const dispatch = useDispatch();
 
   const logoutHandler = () => {
     dispatch(authActions.logout());
+    dispatch(resultActions.home());
   };
 
   const votedDishes = JSON.parse(localStorage.getItem("dishes"));
