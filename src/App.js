@@ -5,8 +5,10 @@ import Login from "./login";
 import Dishes from "./dishes";
 import Result from "./pollResult";
 import dishesData from "./database/db.json";
+import { useSelector } from "react-redux";
 
 function App() {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const [dishes, setDishes] = useState([]);
 
   const getDishes = () => {
@@ -38,10 +40,14 @@ function App() {
 
   return (
     <>
+      {!isLoggedIn && <Login dishes={dishes} />}
+      {/* {isLoggedIn && <Dishes dishes={dishes} />} */}
       <Routes>
         <Route path="/favdishes" element={<Login dishes={dishes} />} />
-        <Route path="/home" element={<Dishes dishes={dishes} />} />
-        <Route path="/pollresult" element={<Result dishes={dishes} />} />
+        {isLoggedIn && (
+          <Route path="/home" element={<Dishes dishes={dishes} />} />
+        )}
+        <Route path="/pollresult" element={<Result />} />
       </Routes>
     </>
   );

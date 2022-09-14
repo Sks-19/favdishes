@@ -1,15 +1,19 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Data from "./database/users.json";
+import { useDispatch } from "react-redux";
+import { authActions } from "./store/auth";
 
 const Login = () => {
+  const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     var name = document.myForm.name.value;
     var pass = document.myForm.password.value;
     Data.map((e) => {
       if (e.username === name && e.password === pass) {
-        window.location.replace("/home");
+        dispatch(authActions.login());
       } else {
         document.querySelector(".Alert").textContent =
           "Your Userid or Password is not correct. Please try again!";

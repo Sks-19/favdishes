@@ -1,23 +1,30 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./navbar";
 import "./pollResult.css";
+import { useDispatch } from "react-redux";
+import { authActions } from "./store/auth";
 
 const PollResult = () => {
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    dispatch(authActions.logout());
+  };
+
   const votedDishes = JSON.parse(localStorage.getItem("dishes"));
 
   return (
     <>
       <Navbar />
       <div className="container p-4">
-        <NavLink
-          to="/favdishes"
+        <button
           type="button"
           className="btn btn-outline-danger btnLogout my-1"
+          onClick={logoutHandler}
         >
           Logout
-        </NavLink>
+        </button>
 
         <h1 style={{ textAlign: "center" }} className="my-4">
           Favorite Dish Poll Result
