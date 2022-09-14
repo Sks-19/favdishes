@@ -21,18 +21,20 @@ const PollResult = () => {
       <Navbar />
       <div className="container p-4">
         <div className="row">
-          <button
-            type="button"
-            className="btn btn-outline-danger btnLogout my-1"
-            onClick={logoutHandler}
-          >
-            Logout
-          </button>
-        </div>
-        <div className="row">
-          <h1 style={{ textAlign: "center" }} className="my-4">
-            Favorite Dish Poll Result
-          </h1>
+          <div className="col col-8">
+            <h1 style={{ textAlign: "center" }} className="m-4">
+              Poll Result
+            </h1>
+          </div>
+          <div className="col col-4">
+            <button
+              type="button"
+              className="btn btn-outline-danger btnLogout m-4"
+              onClick={logoutHandler}
+            >
+              Logout
+            </button>
+          </div>
         </div>
         {votedDishes
           .sort((a, b) =>
